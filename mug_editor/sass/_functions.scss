@@ -1,0 +1,137 @@
+//font variables
+//toto som presunul z priecinku variables je logickejsie mat mixiny po kope podla mna
+@mixin opensans($fontsize: 16px, $type: normal, $color: #fff, $lineheight: 26px) {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: $type;
+    font-size: $fontsize;
+    line-height: $lineheight;
+    color: $color;
+}
+
+@mixin proxima( $fontsize: 16px, $type: normal, $color: #fff, $lineheight: 26px) {
+    font-family: 'ProximaNova';
+    font-weight: $type; //normal, 600, bold
+    font-size: $fontsize;
+    line-height: $lineheight;
+    color: $color;
+}
+
+// Border Radius Bottom
+@mixin border-radius-bottom($radius: 5px) {
+  -webkit-border-radius:              0 0 $radius $radius;
+     -moz-border-radius-topleft:      0;
+     -moz-border-radius-topright:     0;
+     -moz-border-radius-bottomright:  $radius;
+     -moz-border-radius-bottomleft:   $radius;
+     -moz-border-radius:              0 0 $radius $radius;
+          border-radius:              0 0 $radius $radius;
+}
+
+// linear gradient
+@mixin gradient($bottomColor, $topColor) {
+  background-color: $topColor;
+  background-image: linear-gradient(bottom, $bottomColor 0%, $topColor 100%);
+  background-image: -o-linear-gradient(bottom, $bottomColor 0%, $topColor 100%);
+  background-image: -moz-linear-gradient(bottom, $bottomColor 0%, $topColor 100%);
+  background-image: -webkit-linear-gradient(bottom, $bottomColor 0%, $topColor 100%);
+  background-image: -ms-linear-gradient(bottom, $bottomColor 0%, $topColor 100%);
+  
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, $bottomColor),
+    color-stop(1, $topColor)
+  );
+}
+
+@mixin opacity($level:  0.5) {
+    $alpha: $level*100;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="$alpha")";
+    filter: alpha(opacity=$alpha);
+    -moz-opacity: $level;
+    -khtml-opacity: $level;
+        opacity: $level;
+}
+
+@mixin verticalMiddle() {
+    // Only use when not using autoprefixer
+    // -ms-transform: translateY(-50%);
+    // -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+@mixin placehloder($size, $style, $color) {
+    ::-webkit-input-placeholder { /* Safari, Chrome and Opera */
+        @include proxima($size, $style, $color);
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+        @include proxima($size, $style, $color);
+    }
+
+    ::-moz-placeholder { /* Firefox 19+ */
+        @include proxima($size, $style, $color);
+    }
+
+    :-ms-input-placeholder { /* IE 10+ */
+        @include proxima($size, $style, $color);
+    }
+
+    ::-ms-input-placeholder { /* Edge */
+        @include proxima($size, $style, $color);
+    }
+}
+//tu sa usetri jedno slovo :D
+@mixin scale($size: 1.1) {
+    // Only use when not using autoprefixer
+    //-ms-transform: scale($size); /* IE 9 */
+    //-webkit-transform: scale($size); /* Safari */
+    transform: scale($size);
+}
+
+
+// Only use when not using autoprefixer
+/*
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+
+
+// Drop shadows
+@mixin box-shadow($shadow: 0 0 6px #b8b8b8) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+
+// Transitions
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+      -ms-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+
+// box-sizing: border-box
+@mixin border-box() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+
+@mixin rotate($degree: 90deg) {
+    -webkit-transform: rotate($degree);
+    -moz-transform: rotate($degree);
+    -o-transform: rotate($degree);
+    -ms-transform: rotate($degree);
+    transform: rotate($degree);
+};
+*/

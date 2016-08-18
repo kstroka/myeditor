@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Promotlač | Editor</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="PromoTlac Editor">
+        <meta property="og:title" content=""/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:image" content=""/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content=""/>
+        <meta name="author" content="smartbase.sk"/>
+        <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' />
+        
+        <!-- css -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />    
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-slider.min.css" />   
+        <link rel="stylesheet" type="text/css" href="css/style.css" />        
+    </head>
+    <body class="sb">       
+        <!-- Static navbar -->
+	    <nav class="navbar navbar-default navbar-static-top">
+			<div class="container-fluid">
+				<div id="navbar" class="navbar-collapse collapse">
+					<a href="http://www.promotlac.sk" class="navbar-brand">
+						<img src="images/content/editor_logo.png" alt="Promotlač.sk">
+					</a>
+					<ul class="nav navbar-nav navbar-left">
+						<li id="insert_image">
+							<a href="#"><img src="images/icons/icon-image.png" class="icon_img" alt="image">Vložiť obrázok</a>
+						</li>
+						<li id="insert_text">
+							<a href="#"><img src="images/icons/icon-text.png" class="icon_img" alt="image">Vložiť text</a>
+						</li>
+						<!--<li id="cup_color_id" class="cup_color">
+							<a href="#cup_color"><img src="images/icons/icon-color.png" class="icon_img" alt="image">Farba hrnčeka</a>
+							<div class="color_chooser">
+								<div id="orange_color" class="color selected">
+									<div>O</div>
+								</div>
+								<div id="black_color" class="color">
+									<div>Č</div>
+								</div>
+								<div id="green_color" class="color">
+									<div>Z</div>
+								</div>
+								<div id="blue_color" class="color">
+									<div>M</div>
+								</div>
+								<div id="pink_color" class="color">
+									<div>F</div>
+								</div>
+								<div id="red_color" class="color">
+									<div>Č</div>
+								</div>
+								<div id="glass_color" class="color">
+									<div>S</div>
+								</div>
+							</div>
+						</li>-->
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#" id="download_file"><img src="images/icons/icon-download.png" class="icon_img" alt="image">Stiahnúť</a>
+						</li>
+						<li class="shopping">
+							<a href="./"><i class="icon-icon-addtocart"></i>Vložiť do košíka</a>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+	      	</div>
+	    </nav>
+	    <!--3D area-->
+		<div id="main_editor"></div>
+
+		<!--preview-->
+		<div class="preview_div">
+			<div class="header">
+				<div class="left_header">
+					<div class="icon active_icon"><i class="icon-icon-move"></i></div>
+					<div class="icon dropdown">
+						<i class="icon-icon-align"></i>
+						<div id="alignment">
+							<div class="header">Zarovnanie</div>
+							<div id="top_alignment" class="option">Na vrch</div>
+							<div id="bottom_alignment" class="option">Na spodok</div>
+							<div id="left_alignment" class="option">Do ľava</div>
+							<div id="right_alignment" class="option">Do prava</div>
+							<div id="center_alignment" class="option">Centrovať</div>
+						</div>
+					</div>
+				</div>
+				<div class="right_header">
+					<div id="close_preview" class="icon"><i class="icon-icon_cancel"></i> <div id="close_button">skryť</div></div>
+					<div id="tabs_toolbar" class="tabs_layout icon">
+					</div>
+				</div>
+			</div>
+			<div id="preview_area">
+			</div>	
+		</div>
+
+		<!--right_bar-->
+		<div class="right_bar">
+			<div id="sidebar_header" class="header">
+				<div class="text"><img src="images/icons/icon-layers.png" class="icon_img" alt="image">Vrstvy</div>
+				<div id="show_sidebar" class="icon"><i class="icon-arrow-right"></i></div>
+			</div>
+			<div id="sortable" class="layers list-group">
+			</div>
+		</div>
+
+		<div id="popup_wrapper"></div>
+		<div id="popup_image">
+			<div class="button_close">
+				<i class="icon-icon_cancel"></i>
+			</div>	
+			<div class="content">
+				<div class="heading">
+					Vložte obrázok
+				</div>
+				<div class="buttons_panel">
+					<div id="file_up" class="button"><span id="show_upload_text"><img src="images/icons/icon-upload.png" class="icon_img" alt="image"> NAHRAŤ OBRÁZOK</span><span id="show_loading"><img src="images/icons/loading.gif" class="icon_loading" alt="loading"></span></div>
+					<input type="file" id="file_upload" accept="image/*">
+				</div>
+				<div class="note">
+					Vkladajte súbory <strong>.pdf, .png, .jpeg</strong> max. veľkosť <strong>5Mb</strong>
+				</div>
+			</div>
+		</div>
+		<div id="popup_text">
+			<div class="button_close">
+				<i class="icon-icon_cancel"></i>
+			</div>	
+			<div class="content">
+				<div id="popup_text_header" class="heading">
+				</div>
+				<div class="row">
+					<select name="font_type" id="font_type">
+					</select>
+					<div id="alignment_left" class="button text_alignment"><i class="icon-left-alignment"></i></div>
+					<div id="alignment_center" class="button text_alignment"><i class="icon-center-alignment"></i></div>
+					<div id="alignment_right" class="button text_alignment"><i class="icon-right-alignment"></i></div>
+					<input id="font_color" class="font_color" name="font_color" type="color"  value="#000000" />
+				</div>
+				<div class="row">
+					<textarea id="new_text" placeholder="Zadajte text"></textarea>
+				</div>
+				<div class="row row_right">
+					<div class="final_button button_close"><i class="icon-icon_cancel"></i> ZRUŠIŤ</div>
+					<div id="save_button" class="final_button"><i class="icon-icon-check"></i> ULOŽIŤ</div>
+				</div>
+			</div>
+		</div>
+        <footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div id="first_slider" class="col-sm-6">
+						otočenie: <span id="rotate_value">50</span>%
+						<input id="rotate" data-slider-id='rotate' type="text" data-slider-min="0" data-slider-max="6.28318530718" data-slider-step="0.01" data-slider-value="0" data-slider-tooltip="hide"/>
+					</div>
+					<div id="second_slider" class="col-sm-6" >
+						veľkosť	<span id="size_value">50</span>%
+						<input id="size" data-slider-id='size' type="text" data-slider-min="0" data-slider-max="3" data-slider-step="0.01" data-slider-value="1" data-slider-tooltip="hide"/>
+					</div>
+				</div>
+			</div>
+            <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+            <script type="text/javascript" src="js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="js/bootstrap-slider.min.js"></script>
+            <script type="text/javascript" src="js/three.min.js"></script>
+		    <script type="text/javascript" src="js/Detector.js"></script>
+		    <script type="text/javascript" src="js/stats.min.js"></script>
+		    <script type="text/javascript" src="js/OrbitControls.js"></script>
+		    <script type="text/javascript" src="js/pixi.js"></script>
+		    <script type="text/javascript" src="js/tween.min.js"></script>
+		    <script type="text/javascript" src="js/Sortable.min.js"></script>
+		    <script type="text/javascript" src="js/config_values.js"></script>
+            <script type="text/javascript" src="js/script.js"></script>
+        </footer>             
+    </body>
+</html>

@@ -1,0 +1,16 @@
+// bootstrap and basic tag styles common throughout whole page
+
+h1, h2, h3, h4, h5, h6{
+	margin: 0;
+}
+
+a, a:hover, a:focus, a:visited {
+    text-decoration: none!important;
+}
+
+body {
+	height:100vh;
+	background-color: #eeeeee;
+	font-family:'montserrat';
+	font-weight: 300;
+}
